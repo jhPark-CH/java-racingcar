@@ -3,6 +3,8 @@ package racingcar.domain;
 import racingcar.domain.status.CarMoveAbility;
 import racingcar.domain.status.MoveAbility;
 
+import java.util.Objects;
+
 public class Car {
     private static final int START_POSITION = 0;
 
@@ -36,5 +38,20 @@ public class Car {
 
     public boolean isFirstPosition(Car car) {
         return this.position == car.position;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return position == car.position &&
+                Objects.equals(name, car.name) &&
+                Objects.equals(moveAbility, car.moveAbility);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, position, moveAbility);
     }
 }

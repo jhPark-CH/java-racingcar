@@ -24,7 +24,7 @@ public class ResultView {
     }
 
     private static String markCarsMove(Cars cars) {
-        return cars.getCarList().stream()
+        return cars.getCars().stream()
                 .map(ResultView::markCarFormat)
                 .collect(Collectors.joining());
     }

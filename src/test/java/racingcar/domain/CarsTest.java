@@ -34,9 +34,9 @@ class CarsTest {
         cars.moveCars();
 
         assertAll("cars",
-                () -> assertEquals(cars.getCarList().get(0).getPosition(), createCars().get(0).getPosition() + 1),
-                () -> assertEquals(cars.getCarList().get(1).getPosition(), createCars().get(1).getPosition() + 1),
-                () -> assertEquals(cars.getCarList().get(2).getPosition(), createCars().get(2).getPosition() + 1));
+                () -> assertEquals(cars.getCars().get(0).getPosition(), createCars().get(0).getPosition() + 1),
+                () -> assertEquals(cars.getCars().get(1).getPosition(), createCars().get(1).getPosition() + 1),
+                () -> assertEquals(cars.getCars().get(2).getPosition(), createCars().get(2).getPosition() + 1));
     }
 
     private List<Car> createCars() {

@@ -10,18 +10,18 @@ import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 public class Cars {
-    private final List<Car> carList;
+    private final List<Car> cars;
 
     public Cars(List<Car> carList) {
-        this.carList = carList;
+        this.cars = carList;
     }
 
     public Cars(String carNames) {
-        this.carList = Collections.unmodifiableList(readyCars(carNames));
+        this.cars = Collections.unmodifiableList(readyCars(carNames));
     }
 
-    public List<Car> getCarList() {
-        return this.carList;
+    public List<Car> getCars() {
+        return this.cars;
     }
 
     private List<Car> readyCars(String carNames) {
@@ -32,19 +32,19 @@ public class Cars {
     }
 
     public List<Car> findWinners() {
-        return carList.stream()
+        return cars.stream()
                 .filter(car -> car.isFirstPosition(findFirstPositionCar()))
                 .collect(Collectors.toList());
     }
 
     public Car findFirstPositionCar() {
-        return carList.stream()
+        return cars.stream()
                 .max(Comparator.comparingInt(Car::getPosition))
                 .orElseThrow(() -> new NoSuchElementException(RacingMessage.NOT_FOUND_FIRST_POSITION_CAR));
     }
 
     public void moveCars() {
-        for (Car car : this.carList) {
+        for (Car car : this.cars) {
             car.move();
         }
     }
